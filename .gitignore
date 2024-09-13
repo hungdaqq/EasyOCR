@@ -2,10 +2,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+easyocr/lib
+easyocr/bin
+easyocr/lib64
+easyocr/include
 # C extensions
 *.so
-
+trainer/all_data
+trainer/craft/data_root_dir
+trainer/craft/exp
+trainer/saved_models
 # Distribution / packaging
 .Python
 env/
