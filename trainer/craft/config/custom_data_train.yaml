@@ -7,16 +7,15 @@ data_root_dir: "./data_root_dir/"
 score_gt_dir: None # "/data/ICDAR2015_official_supervision"
 mode: "weak_supervision"
 
-
 train:
-  backbone : vgg
+  backbone: vgg
   use_synthtext: False # If you want to combine SynthText in train time as CRAFT did, you can turn on this option
   synth_data_dir: "/data/SynthText/"
   synth_ratio: 5
   real_dataset: custom
-  ckpt_path: "./pretrained_model/CRAFT_clr_amp_29500.pth"
+  ckpt_path: "./exp/CRAFT_clr_amp_29500.pth"
   eval_interval: 1000
-  batch_size: 5
+  batch_size: 2
   st_iter: 0
   end_iter: 25000
   lr: 0.0001
@@ -32,10 +31,10 @@ train:
     vis_opt: False
     pseudo_vis_opt: False
     output_size: 768
-    do_not_care_label: ['###', '']
+    do_not_care_label: ["###", ""]
     mean: [0.485, 0.456, 0.406]
     variance: [0.229, 0.224, 0.225]
-    enlarge_region : [0.5, 0.5] # x axis, y axis
+    enlarge_region: [0.5, 0.5] # x axis, y axis
     enlarge_affinity: [0.5, 0.5]
     gauss_init_size: 200
     gauss_sigma: 40
@@ -65,7 +64,7 @@ train:
         option: True
     custom_aug:
       random_scale:
-        range: [ 1.0, 1.5, 2.0 ]
+        range: [1.0, 1.5, 2.0]
         option: False
       random_rotate:
         max_angle: 20
@@ -84,17 +83,16 @@ train:
         saturation: 0.2
         hue: 0.2
         option: True
-
-test:
-  trained_model : null
-  custom_data:
-    test_set_size: 500
-    test_data_dir: "./data_root_dir/"
-    text_threshold: 0.75
-    low_text: 0.5
-    link_threshold: 0.2
-    canvas_size: 2240
-    mag_ratio: 1.75
-    poly: False
-    cuda: True
-    vis_opt: False
+# test:
+#   trained_model: null
+#   custom_data:
+#     test_set_size: 500
+#     test_data_dir: "./data_root_dir/"
+#     text_threshold: 0.75
+#     low_text: 0.5
+#     link_threshold: 0.2
+#     canvas_size: 2240
+#     mag_ratio: 1.75
+#     poly: False
+#     cuda: True
+#     vis_opt: False

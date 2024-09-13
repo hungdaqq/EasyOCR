@@ -100,7 +100,10 @@ class CraftBaseDataset(Dataset):
                 )
 
             elif self.aug.random_crop.version == "random_crop":
-                augment_targets = random_crop(augment_targets, self.output_size,)
+                augment_targets = random_crop(
+                    augment_targets,
+                    self.output_size,
+                )
 
             else:
                 assert "Undefined RandomCrop version"
@@ -392,7 +395,7 @@ class CustomDataset(CraftBaseDataset):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         img_gt_box_path = os.path.join(
-            self.img_gt_box_dir, "gt_%s.txt" % os.path.splitext(img_name)[0]
+            self.img_gt_box_dir, "%s.txt" % os.path.splitext(img_name)[0]
         )
         word_bboxes, words = self.load_img_gt_box(
             img_gt_box_path
